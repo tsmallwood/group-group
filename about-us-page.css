@@ -1,5 +1,5 @@
 html, body{
-    background-color:#E8E8E8;
+    background-color: white;
   }
   
   .navbar{
@@ -22,7 +22,7 @@ html, body{
     position: fixed;
     margin-bottom: 0px;
     z-index: 1;
-    background-color: whitesmoke;
+    background-color: white;
     border-top: solid #404040 2px;
     border-bottom: solid #404040 1px;
 
@@ -34,7 +34,7 @@ html, body{
     margin-top: 0px;
     margin-bottom: 0px;
     padding-top: 0px;
-    margin-left: 0px;
+    margin-left: 35px;
     padding-bottom: 0px;
 }
 
@@ -43,7 +43,7 @@ html, body{
 .col-8{
     position: fixed;
     top: 250px;
-    left: 320px;
+    left: 390px;
     height: 50%;
     width: 1000px;
     overflow-y: hidden;
@@ -51,4 +51,8 @@ html, body{
     font-size: 1.5rem;
     font-family: cursive;
 
+}
+
+a{
+  font-family: cursive;
 }
