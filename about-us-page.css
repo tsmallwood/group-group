@@ -53,6 +53,7 @@ html, body{
 
 }
 
-a{
-  font-family: cursive;
-}
+a {
+  font-family: cursive; 
+  font-size: 1.2rem;
+ }
