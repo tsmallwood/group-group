@@ -1,17 +1,15 @@
-class controller {
+class loginController {
     constructor(currentID = 0){
         this.currentID = currentID;
-        this.gearArray = [];
+        this.loginArray = [];
     }
 
-    addGear(url, name, use, price){
-        let newGear = {
-            id: this.currentID++,
-            url,
-            name,
-            use,
-            price
+    storeLogin(username, password){
+        let userLogin = {
+            username: this.currentID++,
+            password,
         }
-        this.gearArray.push(newGear);
+
+        this.loginArray.push(userLogin);
     }
-}
+} 
