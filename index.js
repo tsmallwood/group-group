@@ -11,7 +11,7 @@ productManager.loadLocalStorage();
 
 
 // API call to json placeholder. Will create items using this placeholder then switch out for database later.
-const getGear = () => {
+const getProduct = () => {
     fetch("https://jsonplaceholder.typicode.com/users")
     .then(response => {
         if(response.status === 200){
@@ -20,7 +20,7 @@ const getGear = () => {
             console.error(response)
         }
     }).then(json => {
-        createGearList(json)
+        createProductList(json)
         return json;
     })
 }
@@ -43,63 +43,63 @@ const getGear = () => {
 // }
 
 // will be used when data persists
-const createGearList = (gear) => {
+const createProductList = (product) => {
     for (let i = 0; i < gear.length; i++){
         let newRow = document.createElement("tr")
         newRow.innerHTML = `<tr>
-        <th scope="row"><img class="img-thumbnail" src="${gear[i].picUrl}"></th>
-        <td>${gear[i].name}</td>
-        <td>${gear[i].usedFor}</td>
-        <td>${gear[i].price}</td>
+        <th scope="row"><img class="img-thumbnail" src="${product[i].picUrl}"></th>
+        <td>${product[i].name}</td>
+        <td>${product[i].usedFor}</td>
+        <td>${product[i].price}</td>
       </tr>`;
-      gearRows.append(newRow);
+      productRows.append(newRow);
     }
 }
 
-const addItemToGearList = (gear) => {
-    console.log(gear);
+const addItemToProductList = (product) => {
+    console.log(product);
         let newRow = document.createElement("tr")
         newRow.innerHTML = `<tr>
-        <th scope="row"><img class="img-thumbnail" src="${gear.picUrl}"></th>
-        <td>${gear.name}</td>
-        <td>${gear.usedFor}</td>
-        <td>${gear.price}</td>
+        <th scope="row"><img class="img-thumbnail" src="${product.picUrl}"></th>
+        <td>${product.name}</td>
+        <td>${product.usedFor}</td>
+        <td>${product.price}</td>
       </tr>`;
-      gearRows.append(newRow); 
+      productRows.append(newRow); 
 }
 
 // uncomment the function call below to run the API and populate the list of gear... It is currently a list of people because I am using a jsonPlaceHolder API
 // getGear();
 
 const loadLocalStorage = () => {
-    if (localStorage.getItem("gear")){
-        console.log("gear exists");
-        let gear = JSON.parse(localStorage.getItem("gear"));
-        createGearList(gear);
+    if (localStorage.getItem("product")){
+        console.log("product exists");
+        let gear = JSON.parse(localStorage.getItem("product"));
+        createGearList(product);
     } else {
-        console.log("no gear")
+        console.log("no product")
     }
 }
 
-addGearButton.addEventListener("click", function(event){
+addProductButton.addEventListener("click", function(event){
     event.preventDefault();
-    let gearURL = document.getElementById("gearURL");
-    let gearType = document.getElementById("gearType");
-    let gearPrice = document.getElementById("gearPrice");
-    let gearUsedFor = document.getElementById("gearUsedFor");
+    let productURL = document.getElementById("productURL");
+    let productType = document.getElementById("productType");
+    let productPrice = document.getElementById("productPrice");
+    let productUsedFor = document.getElementById("productUsedFor");
 
-    gearManager.addGear(gearURL.value, gearType.value, gearUsedFor.value, gearPrice.value);
-    addItemToGearList({
-        picUrl: gearURL.value,
-        name: gearType.value,
-        usedFor: gearUsedFor.value,
-        price: gearPrice.value
+    productManager.addProduct(productURL.value, productType.value, productUsedFor.value, productPrice.value);
+    addItemToProductList({
+        picUrl: productURL.value,
+        name: productType.value,
+        usedFor: productUsedFor.value,
+        price: productPrice.value
     });
 
-    gearURL = '';
-    gearType = '';
-    gearPrice = '';
-    gearUsedFor = '';
+    productURL = '';
+    productType = '';
+    productPrice = '';
+    productUsedFor = '';
 })
 
 loadLocalStorage();
